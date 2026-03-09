@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BR Law Firm — Dubai's Premier Legal Consultants</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:  #0d1635;
+  --deep:  #070c19;
+  --gold:  #b8963e;
+  --gold2: #d4af5a;
+  --cream: #f8f5ef;
+  --white: #ffffff;
+  --grey:  #6b7280;
+  --light: #e8e4dc;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--cream); font-family:'DM Sans',sans-serif; color:var(--navy); overflow-x:hidden; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background:var(--navy);
+  padding:10px 80px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.topbar a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:13px; }
+.topbar a:hover { color:var(--gold); }
+.topbar-left { display:flex; gap:32px; align-items:center; }
+.topbar-right { color:var(--gold); font-size:12px; letter-spacing:0.04em; }
+
+/* ── NAV ── */
+nav {
+  background:var(--cream);
+  border-bottom:1px solid var(--light);
+  padding:20px 80px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 2px 20px rgba(13,22,53,0.06);
+}
+.nav-logo-text { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--navy); }
+.nav-logo-text span { color:var(--gold); }
+.nav-sub { font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--grey); margin-top:-2px; }
+.nav-links { display:flex; gap:36px; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--navy); text-decoration:none; transition:color .3s; position:relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a:hover::after { width:100%; }
+.nav-cta {
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  background:var(--gold); color:var(--white); padding:13px 28px;
+  text-decoration:none; transition:background .3s;
+}
+.nav-cta:hover { background:var(--gold2); }
+
+/* ── HERO ── */
+#hero {
+  background:var(--navy);
+  display:grid; grid-template-columns:55fr 45fr;
+  min-height:91vh; overflow:hidden;
+}
+.hero-content {
+  padding:100px 80px 80px 80px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.hero-tag {
+  font-size:11px; font-weight:700; letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px;
+  margin-bottom:28px;
+  opacity:0; animation:fadeUp .7s .1s forwards;
+}
+.hero-tag::before { content:''; width:40px; height:1px; background:var(--gold); }
+.hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,6vw,80px);
+  font-weight:700; line-height:1.03; color:var(--white);
+  margin-bottom:28px;
+  opacity:0; animation:fadeUp .7s .25s forwards;
+}
+.hero-h1 em { color:var(--gold); font-style:italic; }
+.hero-desc {
+  font-size:17px; font-weight:300; line-height:1.75;
+  color:rgba(255,255,255,0.65); max-width:520px;
+  margin-bottom:44px;
+  opacity:0; animation:fadeUp .7s .4s forwards;
+}
+.hero-btns {
+  display:flex; gap:16px; flex-wrap:wrap;
+  margin-bottom:60px;
+  opacity:0; animation:fadeUp .7s .55s forwards;
+}
+.btn-gold {
+  font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  background:var(--gold); color:var(--white); padding:18px 44px;
+  text-decoration:none; transition:all .3s; display:inline-block;
+}
+.btn-gold:hover { background:var(--gold2); transform:translateY(-1px); }
+.btn-outline {
+  font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+  border:1px solid rgba(255,255,255,0.25); color:var(--white); padding:18px 36px;
+  text-decoration:none; transition:all .3s; display:inline-block;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+.hero-stats {
+  display:flex; gap:48px; padding-top:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  opacity:0; animation:fadeUp .7s .7s forwards;
+}
+.stat-num { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:700; color:var(--gold); line-height:1; }
+.stat-lbl { font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:6px; }
+
+.hero-visual {
+  background:linear-gradient(160deg,#1a2540,#0d1635);
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.hero-glow { position:absolute; top:-100px; right:-100px; width:400px; height:400px; background:radial-gradient(circle,rgba(184,150,62,.15),transparent 70%); }
+.hero-glow2 { position:absolute; bottom:-150px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(184,150,62,.06),transparent 70%); }
+.hero-visual-inner {
+  position:relative; z-index:1; width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:12px;
+}
+.hero-visual-icon { font-size:80px; opacity:.15; }
+.hero-visual-txt { font-size:14px; color:rgba(255,255,255,.25); letter-spacing:.08em; }
+.hero-visual-hint { font-size:11px; color:var(--gold); letter-spacing:.18em; text-transform:uppercase; }
+.hero-badge {
+  position:absolute; bottom:0; left:0;
+  background:var(--gold); padding:22px 32px; z-index:2;
+}
+.hero-badge-title { font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--navy); }
+.hero-badge-sub { font-size:12px; color:rgba(13,22,53,.65); margin-top:4px; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background:var(--deep);
+  padding:26px 80px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:20px;
+}
+.trust-item { text-align:center; padding:0 20px; border-right:1px solid rgba(184,150,62,.2); }
+.trust-item:last-child { border-right:none; }
+.trust-name { font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+.trust-sub { font-size:11px; color:rgba(255,255,255,.4); margin-top:4px; }
+
+/* ── SECTION HEADERS ── */
+.section-wrap { padding:100px 80px; }
+.section-wrap.dark { background:var(--navy); }
+.section-wrap.cream { background:var(--cream); }
+.section-wrap.white { background:var(--white); }
+
+.eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px;
+  margin-bottom:16px;
+}
+.eyebrow::before { content:''; width:36px; height:1px; background:var(--gold); }
+.section-h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,54px); font-weight:700; line-height:1.07; color:var(--navy);
+  margin-bottom:20px;
+}
+.section-h2 em { color:var(--gold); font-style:italic; }
+.section-h2.white { color:var(--white); }
+.gold-line { width:56px; height:1px; background:var(--gold); margin:24px 0 32px; }
+
+/* ── PRACTICE AREAS ── */
+#practice { background:var(--cream); padding:100px 80px; }
+.practice-header { text-align:center; margin-bottom:64px; }
+.practice-header .eyebrow { justify-content:center; }
+.practice-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.practice-card {
+  background:var(--white);
+  border:1px solid var(--light);
+  padding:40px 32px;
+  position:relative; overflow:hidden;
+  transition:all .3s; cursor:default;
+}
+.practice-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:100%; height:3px; background:var(--gold);
+  transform:scaleX(0); transform-origin:left; transition:transform .4s;
+}
+.practice-card:hover { border-color:rgba(184,150,62,.35); box-shadow:0 8px 40px rgba(13,22,53,.08); transform:translateY(-2px); }
+.practice-card:hover::before { transform:scaleX(1); }
+.practice-icon { font-size:2rem; margin-bottom:18px; color:var(--gold); }
+.practice-name { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.practice-desc { font-size:14px; color:var(--grey); line-height:1.7; margin-bottom:22px; }
+.practice-link { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); text-decoration:none; }
+.practice-link:hover { color:var(--navy); }
+
+/* ── ABOUT ── */
+#about { background:var(--cream); padding:0 0 100px; }
+.about-grid { display:grid; grid-template-columns:45fr 55fr; }
+.about-img-box {
+  background:linear-gradient(145deg,#1a2540,#0d1635);
+  min-height:580px; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.about-img-center { text-align:center; z-index:1; }
+.about-img-center .icon { font-size:5rem; opacity:.15; }
+.about-img-center p { font-size:13px; color:rgba(255,255,255,.25); margin-top:10px; letter-spacing:.06em; }
+.about-img-center small { font-size:10px; color:var(--gold); letter-spacing:.18em; text-transform:uppercase; margin-top:6px; display:block; }
+.about-badge-box {
+  position:absolute; bottom:0; right:0;
+  background:var(--gold); padding:28px 32px; text-align:center;
+}
+.about-badge-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--navy); line-height:1; }
+.about-badge-lbl { font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--navy); margin-top:4px; }
+.about-content { padding:80px 80px 0; display:flex; flex-direction:column; justify-content:center; }
+.about-p { font-size:15px; color:var(--grey); line-height:1.85; margin-bottom:20px; }
+.about-checks { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:28px 0 36px; }
+.check-item { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--navy); font-weight:500; }
+.check-item::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; }
+
+/* ── WHY US ── */
+#why { background:var(--navy); }
+.why-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+.why-card { padding:52px 40px; border-right:1px solid rgba(255,255,255,.07); }
+.why-card:last-child { border-right:none; }
+.why-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--gold); line-height:1; margin-bottom:10px; }
+.why-title { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--white); margin-bottom:12px; }
+.why-desc { font-size:14px; color:rgba(255,255,255,.45); line-height:1.65; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background:var(--cream); padding:100px 80px; }
+.reviews-header { text-align:center; margin-bottom:60px; }
+.reviews-header .eyebrow { justify-content:center; }
+.reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.review-card { background:var(--white); border:1px solid var(--light); padding:44px 36px; position:relative; }
+.review-quote { font-family:'Cormorant Garamond',serif; font-size:4rem; color:var(--gold); opacity:.25; line-height:.8; margin-bottom:20px; }
+.review-text { font-size:15px; color:var(--grey); line-height:1.75; font-style:italic; margin-bottom:32px; }
+.review-author { display:flex; align-items:center; gap:14px; padding-top:22px; border-top:1px solid var(--light); }
+.review-avatar { width:44px; height:44px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; color:var(--white); font-size:18px; flex-shrink:0; }
+.review-name { font-weight:700; color:var(--navy); font-size:14px; }
+.review-role { font-size:11px; color:var(--gold); margin-top:2px; letter-spacing:.06em; }
+.review-stars { color:var(--gold); font-size:11px; margin-top:3px; }
+
+/* ── CTA BANNER ── */
+#cta {
+  background:var(--navy);
+  padding:100px 80px;
+  display:grid; grid-template-columns:65fr 35fr; gap:80px; align-items:center;
+}
+.cta-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4vw,52px); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:24px; }
+.cta-h2 em { color:var(--gold); font-style:italic; }
+.cta-desc { font-size:16px; color:rgba(255,255,255,.6); line-height:1.75; margin-bottom:36px; }
+.cta-btns { display:flex; gap:16px; flex-wrap:wrap; }
+.cta-box {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(184,150,62,.3);
+  padding:36px 32px; text-align:center;
+}
+.cta-box-tag { font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.cta-box-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:700; color:var(--white); line-height:1.2; margin-bottom:10px; }
+.cta-box-sub { font-size:13px; color:rgba(255,255,255,.4); margin-bottom:24px; }
+.cta-box-btn {
+  display:block; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  background:var(--gold); color:var(--navy); padding:14px; text-decoration:none;
+  transition:background .3s;
+}
+.cta-box-btn:hover { background:var(--gold2); }
+
+/* ── CONTACT ── */
+#contact { background:var(--cream); padding:100px 80px; display:grid; grid-template-columns:40fr 60fr; gap:80px; align-items:start; }
+.contact-p { font-size:15px; color:var(--grey); line-height:1.8; margin-bottom:40px; }
+.contact-info { display:flex; flex-direction:column; gap:20px; }
+.ci-row { display:flex; gap:16px; align-items:flex-start; }
+.ci-icon { width:44px; height:44px; background:var(--gold); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.ci-label { font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--grey); margin-bottom:4px; }
+.ci-value { font-size:15px; color:var(--navy); font-weight:500; line-height:1.5; text-decoration:none; }
+.ci-value:hover { color:var(--gold); }
+.contact-form-wrap {
+  background:var(--white); border:1px solid var(--light); padding:52px;
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+.form-label { font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--navy); }
+.form-input, .form-select, .form-textarea {
+  background:var(--cream); border:1px solid var(--light);
+  color:var(--navy); padding:14px 18px; font-family:'DM Sans',sans-serif; font-size:14px;
+  outline:none; transition:border-color .3s; -webkit-appearance:none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--gold); }
+.form-textarea { resize:vertical; min-height:110px; }
+.form-submit {
+  width:100%; background:var(--gold); color:var(--white); border:none;
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; padding:18px;
+  cursor:pointer; transition:background .3s; margin-top:8px;
+}
+.form-submit:hover { background:var(--gold2); }
+
+/* ── FOOTER ── */
+footer { background:var(--navy); padding:80px 80px 0; }
+.footer-grid { display:grid; grid-template-columns:35fr 20fr 20fr 25fr; gap:60px; padding-bottom:60px; }
+.footer-logo { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; color:var(--white); }
+.footer-logo span { color:var(--gold); }
+.footer-logo-sub { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-top:-2px; margin-bottom:16px; }
+.footer-desc { font-size:14px; color:rgba(255,255,255,.4); line-height:1.75; margin-bottom:24px; }
+.footer-socials { display:flex; gap:10px; }
+.fsocial {
+  width:36px; height:36px; border:1px solid rgba(184,150,62,.25);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold); font-size:12px; text-decoration:none; transition:all .3s;
+}
+.fsocial:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+.footer-col h4 { font-size:10px; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-col ul a { font-size:14px; color:rgba(255,255,255,.45); text-decoration:none; transition:color .3s; }
+.footer-col ul a:hover { color:var(--cream); }
+.footer-addr { font-size:14px; color:rgba(255,255,255,.45); line-height:1.75; }
+.footer-addr a { color:rgba(255,255,255,.45); text-decoration:none; }
+.footer-addr a:hover { color:var(--gold); }
+.footer-addr .highlight { color:var(--gold); font-weight:600; }
+.footer-bottom {
+  background:var(--deep); border-top:1px solid rgba(184,150,62,.1);
+  padding:22px 80px; display:flex; justify-content:space-between; align-items:center;
+}
+.footer-copy { font-size:12px; color:rgba(255,255,255,.25); }
+.footer-url { font-size:12px; color:rgba(255,255,255,.15); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.1s; }
+.reveal-delay-2 { transition-delay:.2s; }
+.reveal-delay-3 { transition-delay:.3s; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--cream); }
+::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
+
+/* ══════════════════════════════════════
+   MOBILE HAMBURGER MENU
+══════════════════════════════════════ */
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  cursor:pointer; padding:4px; background:none; border:none;
+}
+.hamburger span {
+  display:block; width:24px; height:2px;
+  background:var(--navy); transition:all .3s;
+}
+.mobile-menu {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:var(--navy); z-index:999;
+  flex-direction:column; align-items:center; justify-content:center; gap:36px;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700;
+  color:var(--white); text-decoration:none; transition:color .3s;
+}
+.mobile-menu a:hover { color:var(--gold); }
+.mobile-menu .close-btn {
+  position:absolute; top:24px; right:28px;
+  font-size:2rem; color:var(--white); cursor:pointer;
+  background:none; border:none; line-height:1;
+}
+.mobile-menu .m-cta {
+  font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  background:var(--gold); color:var(--white) !important;
+  padding:16px 44px; margin-top:8px;
+}
+
+/* ══════════════════════════════════════
+   TABLET — max 1024px
+══════════════════════════════════════ */
+@media (max-width:1024px) {
+  .topbar { padding:10px 32px; }
+  .topbar-right { display:none; }
+  nav { padding:18px 32px; }
+  .nav-links { gap:20px; }
+  .nav-links a { font-size:13px; }
+  #hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-content { padding:100px 32px 60px; }
+  .hero-visual { display:none; }
+  .trust-bar { padding:24px 32px; flex-wrap:wrap; gap:16px; justify-content:center; }
+  .trust-item { border-right:none; padding:8px 16px; }
+  #practice { padding:80px 32px; }
+  .practice-grid { grid-template-columns:repeat(2,1fr); }
+  .about-grid { grid-template-columns:1fr; }
+  .about-img-box { min-height:360px; }
+  .about-content { padding:60px 32px; }
+  .why-grid { grid-template-columns:repeat(2,1fr); }
+  .why-card { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
+  .why-card:nth-child(odd) { border-right:1px solid rgba(255,255,255,.07); }
+  #testimonials { padding:80px 32px; }
+  .reviews-grid { grid-template-columns:1fr; gap:20px; }
+  #cta { grid-template-columns:1fr; gap:40px; padding:80px 32px; }
+  #contact { grid-template-columns:1fr; gap:48px; padding:80px 32px; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:40px; }
+  .footer-bottom { padding:20px 32px; flex-direction:column; gap:8px; text-align:center; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE — max 768px
+══════════════════════════════════════ */
+@media (max-width:768px) {
+  /* topbar */
+  .topbar { padding:8px 20px; justify-content:center; }
+  .topbar-left { gap:16px; flex-wrap:wrap; justify-content:center; }
+  .topbar a { font-size:11px; }
+
+  /* nav */
+  nav { padding:16px 20px; }
+  .nav-links { display:none; }
+  .nav-cta { display:none; }
+  .hamburger { display:flex; }
+
+  /* hero */
+  .hero-content { padding:80px 20px 52px; }
+  .hero-tag { font-size:9px; letter-spacing:0.2em; flex-wrap:wrap; }
+  .hero-h1 { font-size:clamp(38px,10vw,56px); }
+  .hero-desc { font-size:15px; }
+  .hero-btns { flex-direction:column; gap:12px; }
+  .btn-gold, .btn-outline { text-align:center; padding:16px 28px; width:100%; }
+  .hero-stats { gap:24px; flex-wrap:wrap; }
+  .stat-num { font-size:36px; }
+
+  /* trust bar */
+  .trust-bar { padding:20px; gap:12px; }
+  .trust-item { padding:6px 12px; }
+  .trust-name { font-size:9px; letter-spacing:.12em; }
+  .trust-sub { font-size:10px; }
+
+  /* practice */
+  #practice { padding:64px 20px; }
+  .practice-grid { grid-template-columns:1fr; gap:12px; }
+  .practice-card { padding:32px 24px; }
+
+  /* about */
+  .about-content { padding:48px 20px; }
+  .about-checks { grid-template-columns:1fr; gap:10px; }
+  .about-badge-box { padding:18px 22px; }
+  .about-badge-num { font-size:2.2rem; }
+
+  /* why */
+  .why-grid { grid-template-columns:1fr 1fr; }
+  .why-card { padding:36px 24px; border-right:none !important; border-bottom:1px solid rgba(255,255,255,.07); }
+  .why-num { font-size:2.4rem; }
+
+  /* testimonials */
+  #testimonials { padding:64px 20px; }
+  .reviews-grid { grid-template-columns:1fr; }
+  .review-card { padding:32px 24px; }
+
+  /* cta */
+  #cta { padding:64px 20px; gap:36px; }
+  .cta-h2 { font-size:clamp(30px,8vw,42px); }
+  .cta-btns { flex-direction:column; gap:12px; }
+  .cta-btns a { text-align:center; }
+
+  /* contact */
+  #contact { padding:64px 20px; gap:40px; }
+  .contact-form-wrap { padding:32px 20px; }
+  .form-row { grid-template-columns:1fr; gap:0; }
+
+  /* footer */
+  footer { padding:60px 20px 0; }
+  .footer-grid { grid-template-columns:1fr; gap:36px; }
+  .footer-bottom { padding:18px 20px; }
+  .footer-copy { font-size:11px; text-align:center; }
+
+  /* section headings */
+  .section-h2 { font-size:clamp(30px,8vw,44px); }
+}
+
+/* ══════════════════════════════════════
+   SMALL MOBILE — max 420px
+══════════════════════════════════════ */
+@media (max-width:420px) {
+  .hero-h1 { font-size:34px; }
+  .stat-num { font-size:30px; }
+  .why-grid { grid-template-columns:1fr; }
+  .trust-bar { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .trust-item { border-right:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#practice" onclick="document.getElementById('mobileMenu').classList.remove('open')">Practice Areas</a>
+  <a href="#testimonials" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+  <a href="https://wa.me/971544543909" class="m-cta">Free Consultation</a>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/971544543909" style="
+  position:fixed;bottom:28px;right:28px;z-index:997;
+  width:58px;height:58px;border-radius:50%;
+  background:#25d366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(37,211,102,.45);font-size:26px;text-decoration:none;
+  transition:transform .3s,box-shadow .3s;" title="Chat on WhatsApp"
+  onmouseover="this.style.transform='scale(1.12)'"
+  onmouseout="this.style.transform='scale(1)'">💬</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:+971544543909">📞 +971 54 454 3909</a>
+    <a href="mailto:info@brlawfirm.ae">✉ info@brlawfirm.ae</a>
+  </div>
+  <div class="topbar-right">Emaar Business Park, Suite 614, Sheikh Zayed Road, Dubai</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nav-logo-text">BR <span>Law Firm</span></div>
+    <div class="nav-sub">Office of Hassan Tamim Advocates</div>
+  </div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#practice">Practice Areas</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://wa.me/971544543909" class="nav-cta">Free Consultation</a>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Trusted Since 38+ Years &nbsp;·&nbsp; 43 Countries &nbsp;·&nbsp; 93% Win Rate</div>
+    <h1 class="hero-h1">Dubai's Premier<br><em>Advocates &</em><br>Legal Consultants</h1>
+    <p class="hero-desc">BR Law Firm — a multilingual, multicultural practice operating across 43 countries with a proven 93% case win rate. We fight for your rights as if our life depended on it.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Book Free Consultation</a>
+      <a href="#practice" class="btn-outline">Our Practice Areas →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">38+</div><div class="stat-lbl">Years Experience</div></div>
+      <div><div class="stat-num">93%</div><div class="stat-lbl">Case Win Rate</div></div>
+      <div><div class="stat-num">43</div><div class="stat-lbl">Countries</div></div>
+      <div><div class="stat-num">18</div><div class="stat-lbl">Languages</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-visual-inner">
+      <div class="hero-visual-icon">⚖</div>
+      <p class="hero-visual-txt">Add Your Firm Photo Here</p>
+      <small class="hero-visual-hint">600 × 700 px recommended</small>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-title">Emaar Business Park</div>
+      <div class="hero-badge-sub">Suite 614, Building 4, Sheikh Zayed Road</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-name">Dubai Courts</div><div class="trust-sub">Licensed & Certified</div></div>
+  <div class="trust-item"><div class="trust-name">Federal Courts</div><div class="trust-sub">Abu Dhabi & UAE</div></div>
+  <div class="trust-item"><div class="trust-name">INTERPOL</div><div class="trust-sub">International Cases</div></div>
+  <div class="trust-item"><div class="trust-name">Supreme Court</div><div class="trust-sub">Federal Level</div></div>
+  <div class="trust-item"><div class="trust-name">18 Languages</div><div class="trust-sub">Multilingual Team</div></div>
+</div>
+
+<!-- PRACTICE AREAS -->
+<section id="practice">
+  <div class="practice-header reveal">
+    <div class="eyebrow">Practice Areas</div>
+    <h2 class="section-h2" style="text-align:center;">We Fight For Every<br><em>Legal Right You Have</em></h2>
+    <p style="color:var(--grey);font-size:16px;margin-top:16px;">From boardroom disputes to courtroom battles — every area of UAE law covered.</p>
+  </div>
+  <div class="practice-grid">
+    <div class="practice-card reveal reveal-delay-1">
+      <div class="practice-icon">⚖</div>
+      <div class="practice-name">Business Law</div>
+      <div class="practice-desc">Corporate disputes, contracts, and commercial legal protection for businesses of all sizes operating in the UAE.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-2">
+      <div class="practice-icon">👪</div>
+      <div class="practice-name">Family Law</div>
+      <div class="practice-desc">Sensitive family matters handled with care — custody, inheritance, guardianship, and domestic disputes.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-3">
+      <div class="practice-icon">🏛</div>
+      <div class="practice-name">Criminal Law</div>
+      <div class="practice-desc">Expert criminal defense with cutting-edge methodology and sequential case mapping for maximum success.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-1">
+      <div class="practice-icon">💔</div>
+      <div class="practice-name">Divorce Law</div>
+      <div class="practice-desc">Protecting your rights through one of life's most difficult transitions with compassion and expertise.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-2">
+      <div class="practice-icon">🏠</div>
+      <div class="practice-name">Real Estate Law</div>
+      <div class="practice-desc">Safeguard your property investments — disputes, transactions, and litigation handled by specialists.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-3">
+      <div class="practice-icon">🌐</div>
+      <div class="practice-name">INTERPOL Cases</div>
+      <div class="practice-desc">Cross-border legal assistance and INTERPOL red notice defense — our internationally recognized specialty.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-1">
+      <div class="practice-icon">👷</div>
+      <div class="practice-name">Labour Law</div>
+      <div class="practice-desc">Employee rights, wrongful termination, and employer-employee dispute resolution across all UAE sectors.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-2">
+      <div class="practice-icon">⚙</div>
+      <div class="practice-name">Civil Litigation</div>
+      <div class="practice-desc">From contract breaches to property claims — comprehensive civil case representation at all court levels.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+    <div class="practice-card reveal reveal-delay-3">
+      <div class="practice-icon">🧾</div>
+      <div class="practice-name">Legal Advisory</div>
+      <div class="practice-desc">Preventive legal counsel for individuals and corporates — keep your business and life out of legal trouble.</div>
+      <a href="#contact" class="practice-link">Consult Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-box reveal">
+      <div class="hero-glow"></div>
+      <div class="about-img-center">
+        <div class="icon">⚖</div>
+        <p>Upload Firm / Team Photo</p>
+        <small>600 × 600 px recommended</small>
+      </div>
+      <div class="about-badge-box">
+        <div class="about-badge-num">38+</div>
+        <div class="about-badge-lbl">Years of Excellence</div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="eyebrow">About BR Law Firm</div>
+      <h2 class="section-h2">Hassan Tamim Advocates<br>& <em>Legal Consultants</em></h2>
+      <div class="gold-line"></div>
+      <p class="about-p">BR Law Firm is the First Choice GO-TO Law Firm in Dubai, UAE. We have emerged as one of the most trusted names in Dubai's legal landscape — a firm that fights for your legal rights as if our own life depended on it.</p>
+      <p class="about-p">Our multilingual team speaks 18 languages and practices across 43 countries, representing clients in Dubai Courts, Abu Dhabi Courts, Federal Courts, Public Prosecution, and the Federal Supreme Court.</p>
+      <div class="about-checks">
+        <div class="check-item">Dubai, Abu Dhabi & Federal Courts</div>
+        <div class="check-item">18 Languages Spoken</div>
+        <div class="check-item">INTERPOL & International Law</div>
+        <div class="check-item">Corporate & Individual Clients</div>
+        <div class="check-item">93% Case Win Rate</div>
+        <div class="check-item">Cutting-Edge Legal Technologies</div>
+      </div>
+      <a href="#contact" class="btn-gold" style="align-self:flex-start;">Meet Our Legal Team →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-num">93%</div>
+      <div class="why-title">Win Rate</div>
+      <div class="why-desc">Consistently winning cases across all UAE courts and international jurisdictions for over three decades.</div>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-num">18</div>
+      <div class="why-title">Languages</div>
+      <div class="why-desc">We speak your language — literally. Serving clients from every corner of the globe without barriers.</div>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-num">43</div>
+      <div class="why-title">Countries</div>
+      <div class="why-desc">International reach with deep knowledge of cross-border legal proceedings and INTERPOL cases.</div>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-num">38+</div>
+      <div class="why-title">Years</div>
+      <div class="why-desc">Decades of courtroom experience and thousands of successfully resolved cases across the UAE.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reviews-header reveal">
+    <div class="eyebrow">Client Testimonials</div>
+    <h2 class="section-h2" style="text-align:center;">What Our Clients Say<br>About <em>Our Legal Work</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-quote">"</div>
+      <div class="review-text">Our construction firm relies on BR Law Firm for all legal activities both inside and outside the court. A very trustworthy law firm in Dubai — they handle every matter with professionalism and speed.</div>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div>
+          <div class="review-name">Sheru Shiek</div>
+          <div class="review-role">Corporate Client</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">"</div>
+      <div class="review-text">At long last the law won — all on account of this firm's persistence and expertise. I searched extensively for a firm that could win my FELA case. BR Law Firm delivered beyond expectations.</div>
+      <div class="review-author">
+        <div class="review-avatar">K</div>
+        <div>
+          <div class="review-name">Kinley Jones</div>
+          <div class="review-role">Individual Client</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="review-quote">"</div>
+      <div class="review-text">BR Law Firm helped me solve my family property matters in and out of court without me needing to be physically present. My entire family is fully satisfied with their outstanding service.</div>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div>
+          <div class="review-name">Sharleez SM</div>
+          <div class="review-role">NRI Client</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta">
+  <div class="reveal">
+    <h2 class="cta-h2">Protect Your Rights.<br>Consult <em>Dubai's Best</em><br>Lawyers Today.</h2>
+    <p class="cta-desc">Whether you're facing a corporate dispute, family matter, criminal charge, or INTERPOL case — BR Law Firm's team of expert advocates is ready to fight for you. First consultation is free.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/971544543909" class="btn-gold">WhatsApp Us Now</a>
+      <a href="tel:+971544543909" class="btn-outline">+971 54 454 3909</a>
+    </div>
+  </div>
+  <div class="cta-box reveal reveal-delay-2">
+    <div class="cta-box-tag">Free Consultation</div>
+    <div class="cta-box-title">Talk to a<br>Lawyer Now</div>
+    <div class="cta-box-sub">Available 7 Days a Week</div>
+    <a href="https://wa.me/971544543909" class="cta-box-btn">Book on WhatsApp</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="eyebrow">Get In Touch</div>
+    <h2 class="section-h2">Request a Free<br><em>Legal Consultation</em></h2>
+    <div class="gold-line"></div>
+    <p class="contact-p">Our team of expert lawyers is ready to review your case and provide honest, professional legal advice. Reach out today — your first consultation is completely free.</p>
+    <div class="contact-info">
+      <div class="ci-row">
+        <div class="ci-icon">📞</div>
+        <div>
+          <div class="ci-label">Phone</div>
+          <a href="tel:+971544543909" class="ci-value">+971 54 454 3909</a>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-icon">✉</div>
+        <div>
+          <div class="ci-label">Email</div>
+          <a href="mailto:info@brlawfirm.ae" class="ci-value">info@brlawfirm.ae</a>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-icon">📍</div>
+        <div>
+          <div class="ci-label">Office</div>
+          <div class="ci-value">Suite 614, Building 4, Emaar Business Park,<br>Sheikh Zayed Road, Dubai, UAE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-wrap reveal reveal-delay-2">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Full Name *</label>
+        <input class="form-input" type="text" placeholder="Your Full Name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number *</label>
+        <input class="form-input" type="tel" placeholder="+971 XX XXX XXXX"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address *</label>
+      <input class="form-input" type="email" placeholder="your@email.com"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Legal Matter *</label>
+      <select class="form-select">
+        <option value="">Select your legal matter</option>
+        <option>Business Law</option>
+        <option>Family Law</option>
+        <option>Criminal Law</option>
+        <option>Divorce Law</option>
+        <option>Real Estate Law</option>
+        <option>INTERPOL Case</option>
+        <option>Labour Law</option>
+        <option>Civil Litigation</option>
+        <option>Legal Advisory</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Preferred Contact</label>
+        <select class="form-select">
+          <option>Phone Call</option>
+          <option>WhatsApp</option>
+          <option>Email</option>
+          <option>In-Person Meeting</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Preferred Language</label>
+        <select class="form-select">
+          <option>English</option>
+          <option>Arabic</option>
+          <option>Hindi</option>
+          <option>Urdu</option>
+          <option>Russian</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Brief Description of Your Case</label>
+      <textarea class="form-textarea" placeholder="Please describe your legal matter briefly..."></textarea>
+    </div>
+    <button class="form-submit" onclick="alert('Thank you! BR Law Firm will contact you within 24 hours.')">REQUEST FREE CONSULTATION</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">BR <span>Law Firm</span></div>
+      <div class="footer-logo-sub">Office of Hassan Tamim Advocates & Legal Consultants</div>
+      <p class="footer-desc">Dubai's leading law firm with 38+ years of excellence. Serving individuals and corporations across UAE and 43 countries worldwide.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/971544543909" class="fsocial">W</a>
+        <a href="mailto:info@brlawfirm.ae" class="fsocial">@</a>
+        <a href="tel:+971544543909" class="fsocial">☎</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Practice Areas</h4>
+      <ul>
+        <li><a href="#">Business Law</a></li>
+        <li><a href="#">Family Law</a></li>
+        <li><a href="#">Criminal Law</a></li>
+        <li><a href="#">Divorce Law</a></li>
+        <li><a href="#">Real Estate Law</a></li>
+        <li><a href="#">INTERPOL Cases</a></li>
+        <li><a href="#">Labour Law</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#practice">Practice Areas</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">Career With Us</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-addr">
+        <p>Suite 614, Building 4<br>Emaar Business Park<br>Sheikh Zayed Road, Dubai, UAE</p>
+        <br>
+        <p><a href="tel:+971544543909">+971 54 454 3909</a></p>
+        <p><a href="mailto:info@brlawfirm.ae" style="color:var(--gold);">info@brlawfirm.ae</a></p>
+        <br>
+        <p class="highlight">Available 7 Days a Week</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-copy">© 2024 BR Law Firm — Office of Hassan Tamim Advocates & Legal Consultants. All Rights Reserved.</div>
+  <div class="footer-url">brlawfirm.ae</div>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Close mobile menu on outside click
+  document.getElementById('mobileMenu').addEventListener('click', function(e){
+    if(e.target === this) this.classList.remove('open');
+  });
+
+  // Dynamic year
+  document.querySelectorAll('.copy-year').forEach(el => el.textContent = new Date().getFullYear());
+</script>
+</body>
+</html>
